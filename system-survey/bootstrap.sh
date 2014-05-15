@@ -38,8 +38,10 @@ mv elasticsearch-1.1.1 elasticsearch
 
 echo "starting elasticsearch"
 elasticsearch/bin/elasticsearch -d
-sleep 2
+sleep 10
 
 echo "starting logstash"
 cd logstash-1.4.0
 nohup bin/logstash agent -f logstash.conf > ../logstash.nohup &
+
+curl -XPOST localhost:9200/kibana-int/dashboard/Collectd --data-binary @/vagrant/dashboard.json
