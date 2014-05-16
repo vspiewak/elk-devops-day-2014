@@ -38,7 +38,12 @@ mv elasticsearch-1.1.1 elasticsearch
 
 echo "starting elasticsearch"
 elasticsearch/bin/elasticsearch -d
-sleep 10
+
+until curl -s localhost:9200
+do
+  sleep 1
+  echo "Waiting ES to be up..."
+done
 
 echo "starting logstash"
 cd logstash-1.4.0
