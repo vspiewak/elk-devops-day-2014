@@ -344,6 +344,24 @@
           "type": "lucene",
           "enable": true,
           "query": "plugin:\"cpu\" AND plugin_instance:\"1\" AND type_instance:\"softirq\""
+        },
+        "38": {
+          "id": 38,
+          "color": "#D683CE",
+          "alias": "eth0 octets",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "plugin:\"interface\" AND collectd_type:\"if_octets\" AND type_instance:\"eth0\""
+        },
+        "39": {
+          "id": 39,
+          "color": "#806EB7",
+          "alias": "packets",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "plugin:\"interface\" AND collectd_type:\"if_packets\""
         }
       },
       "ids": [
@@ -384,7 +402,9 @@
         34,
         35,
         36,
-        37
+        37,
+        38,
+        39
       ]
     },
     "filter": {
@@ -392,7 +412,7 @@
         "0": {
           "type": "time",
           "field": "@timestamp",
-          "from": "now-15m",
+          "from": "now-5m",
           "to": "now",
           "mandate": "must",
           "active": true,
@@ -425,7 +445,7 @@
           "value_field": "used",
           "auto_int": true,
           "resolution": 100,
-          "interval": "10s",
+          "interval": "1s",
           "fill": 3,
           "linewidth": 3,
           "timezone": "browser",
@@ -480,7 +500,9 @@
               34,
               35,
               36,
-              37
+              37,
+              38,
+              39
             ]
           },
           "title": "Events over time",
@@ -2053,7 +2075,7 @@
       "notice": false
     },
     {
-      "title": "cpu0",
+      "title": "cpu",
       "height": "100px",
       "editable": true,
       "collapse": true,
@@ -2732,6 +2754,198 @@
       "notice": false
     },
     {
+      "title": "Eth0",
+      "height": "100px",
+      "editable": true,
+      "collapse": true,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 2,
+          "editable": true,
+          "type": "stats",
+          "loadingEditor": false,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              38
+            ]
+          },
+          "style": {
+            "font-size": "24pt"
+          },
+          "format": "bytes",
+          "mode": "mean",
+          "display_breakdown": "no",
+          "sort_field": "",
+          "sort_reverse": false,
+          "label_name": "Query",
+          "value_name": "Value",
+          "spyable": true,
+          "title": "eth0 tx",
+          "field": "tx",
+          "unit": ""
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "tx",
+          "interval": "30s",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              38
+            ]
+          },
+          "title": "eth0 tx",
+          "derivative": true
+        },
+        {
+          "error": false,
+          "span": 2,
+          "editable": true,
+          "type": "stats",
+          "loadingEditor": false,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              39
+            ]
+          },
+          "style": {
+            "font-size": "24pt"
+          },
+          "format": "number",
+          "mode": "mean",
+          "display_breakdown": "no",
+          "sort_field": "",
+          "sort_reverse": false,
+          "label_name": "Query",
+          "value_name": "Value",
+          "spyable": true,
+          "field": "tx",
+          "title": "packets tx"
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "tx",
+          "interval": "30s",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              39
+            ]
+          },
+          "title": "packets tx",
+          "derivative": true
+        },
+        {
+          "error": false,
+          "span": 2,
+          "editable": true,
+          "type": "stats",
+          "loadingEditor": false,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              38
+            ]
+          },
+          "style": {
+            "font-size": "24pt"
+          },
+          "format": "bytes",
+          "mode": "mean",
+          "display_breakdown": "no",
+          "sort_field": "",
+          "sort_reverse": false,
+          "label_name": "Query",
+          "value_name": "Value",
+          "spyable": true,
+          "title": "eth0 rx",
+          "field": "rx",
+          "unit": ""
+        },
+        {
+          "error": false,
+          "span": 2,
+          "editable": true,
+          "type": "stats",
+          "loadingEditor": false,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              39
+            ]
+          },
+          "style": {
+            "font-size": "24pt"
+          },
+          "format": "number",
+          "mode": "mean",
+          "display_breakdown": "no",
+          "sort_field": "",
+          "sort_reverse": false,
+          "label_name": "Query",
+          "value_name": "Value",
+          "spyable": true,
+          "field": "rx",
+          "title": "packets rx"
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "rx",
+          "interval": "30s",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              38
+            ]
+          },
+          "title": "eth0 rx",
+          "derivative": true
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "rx",
+          "interval": "30s",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              39
+            ]
+          },
+          "title": "packets rx",
+          "derivative": true
+        }
+      ],
+      "notice": false
+    },
+    {
       "title": "Events",
       "height": "350px",
       "editable": true,
@@ -2800,16 +3014,16 @@
       "query": "*",
       "pinned": true,
       "history": [
-        "*",
-        "plugin:\"cpu\" AND plugin_instance:\"1\" AND type_instance:\"idle\"",
-        "plugin:\"cpu\" AND plugin_instance:\"0\" AND type_instance:\"idle\"",
-        "plugin:\"load\" AND collectd_type:\"load\"",
-        "plugin:\"memory\" AND type_instance:\"buffered\"",
-        "plugin:\"memory\" AND type_instance:\"cached\"",
-        "plugin:\"memory\" AND type_instance:\"used\"",
-        "plugin:\"memory\" AND type_instance:\"free\"",
-        "plugin:\"swap\" AND type_instance:\"cached\"",
-        "plugin:\"swap\" AND type_instance:\"used\""
+        "plugin:\"interface\" AND collectd_type:\"if_packets\"",
+        "plugin:\"interface\" AND collectd_type:\"if_octets\" AND type_instance:\"eth0\"",
+        "plugin:\"cpu\" AND plugin_instance:\"1\" AND type_instance:\"softirq\"",
+        "plugin:\"cpu\" AND plugin_instance:\"0\" AND type_instance:\"softirq\"",
+        "plugin:\"cpu\" AND plugin_instance:\"1\" AND type_instance:\"steal\"",
+        "plugin:\"cpu\" AND plugin_instance:\"0\" AND type_instance:\"steal\"",
+        "plugin:\"cpu\" AND plugin_instance:\"1\" AND type_instance:\"nice\"",
+        "plugin:\"cpu\" AND plugin_instance:\"1\" AND type_instance:\"user\"",
+        "plugin:\"cpu\" AND plugin_instance:\"0\" AND type_instance:\"user\"",
+        "plugin:\"cpu\" AND plugin_instance:\"1\" AND type_instance:\"system\""
       ],
       "remember": 10,
       "enable": true
@@ -2870,5 +3084,5 @@
     "load_local": true,
     "hide": false
   },
-  "refresh": "30s"
+  "refresh": "5s"
 }
