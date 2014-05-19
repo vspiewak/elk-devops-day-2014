@@ -530,7 +530,7 @@
       "notice": false
     },
     {
-      "title": "Disks values",
+      "title": "Disks used",
       "height": "100px",
       "editable": true,
       "collapse": true,
@@ -873,7 +873,7 @@
       "notice": false
     },
     {
-      "title": "Disks",
+      "title": "Disks evol",
       "height": "100px",
       "editable": true,
       "collapse": true,
@@ -991,7 +991,7 @@
       "notice": false
     },
     {
-      "title": "Processes stats",
+      "title": "Processes",
       "height": "100px",
       "editable": true,
       "collapse": true,
@@ -1163,7 +1163,7 @@
       "notice": false
     },
     {
-      "title": "Processes",
+      "title": "Processes evol",
       "height": "100px",
       "editable": true,
       "collapse": true,
@@ -2053,7 +2053,7 @@
       "notice": false
     },
     {
-      "title": "cpu",
+      "title": "cpu0",
       "height": "100px",
       "editable": true,
       "collapse": true,
@@ -2251,7 +2251,7 @@
       "notice": false
     },
     {
-      "title": "cpu evol",
+      "title": "cpu1",
       "height": "100px",
       "editable": true,
       "collapse": true,
@@ -2449,7 +2449,7 @@
       "title": "cpu0 evol",
       "height": "100px",
       "editable": true,
-      "collapse": false,
+      "collapse": true,
       "collapsable": true,
       "panels": [
         {
@@ -2470,6 +2470,120 @@
           },
           "title": "cpu0 idle",
           "derivative": true
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "interval": "1m",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              26
+            ]
+          },
+          "title": "cpu0 nice",
+          "derivative": true
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "interval": "1m",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              31
+            ]
+          },
+          "title": "cpu0 user",
+          "derivative": true
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "interval": "1m",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              27
+            ]
+          },
+          "title": "cpu0 wait io",
+          "derivative": true
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "interval": "1m",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              29
+            ]
+          },
+          "title": "cpu0 system",
+          "derivative": true
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "interval": "1m",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              34
+            ]
+          },
+          "title": "cpu0 steal",
+          "derivative": true
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "interval": "1m",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              36
+            ]
+          },
+          "title": "cpu0 softirq",
+          "derivative": true
         }
       ],
       "notice": false
@@ -2478,7 +2592,7 @@
       "title": "cpu1 evol",
       "height": "100px",
       "editable": true,
-      "collapse": false,
+      "collapse": true,
       "collapsable": true,
       "panels": [
         {
@@ -2498,6 +2612,120 @@
             ]
           },
           "title": "cpu1 idle",
+          "derivative": true
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "interval": "1m",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              33
+            ]
+          },
+          "title": "cpu1 nice",
+          "derivative": true
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "interval": "1m",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              32
+            ]
+          },
+          "title": "cpu1 user",
+          "derivative": true
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "interval": "1m",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              28
+            ]
+          },
+          "title": "cpu1 wait io",
+          "derivative": true
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "interval": "1m",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              30
+            ]
+          },
+          "title": "cpu1 system",
+          "derivative": true
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "interval": "1m",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              35
+            ]
+          },
+          "title": "cpu1 steal",
+          "derivative": true
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "interval": "1m",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              37
+            ]
+          },
+          "title": "cpu1 softirq",
           "derivative": true
         }
       ],
