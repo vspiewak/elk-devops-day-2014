@@ -50,3 +50,4 @@ cd logstash-1.4.0
 nohup bin/logstash agent -f logstash.conf > ../logstash.nohup &
 
 curl -XPOST localhost:9200/kibana-int/dashboard/Collectd --data-binary @/vagrant/dashboard.json
+cp /vagrant/dashboard.json /usr/share/nginx/www/kibana/app/dashboards/custom.json
