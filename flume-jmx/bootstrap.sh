@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -x
+
 rm /etc/localtime
 ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
 
@@ -62,8 +64,8 @@ done
 
 echo "Starting logstash"
 cd logstash-1.4.0
-nohup bin/logstash agent -f logstash.conf > ../logstash.nohup &
+nohup bin/logstash agent -f logstash.conf > ../logstash.nohup 2>&1 &
 
 echo "Starting flume"
 cd /home/vagrant/apache-flume
-nohup bin/flume-ng agent --name agent --conf conf -f conf/flume.conf > ../flume.nohup &
+nohup bin/flume-ng agent --name agent --conf conf -f conf/flume.conf > ../flume.nohup 2>&1 &
