@@ -44,6 +44,7 @@ tar xvzf kibana-3.0.1.tar.gz
 mv kibana-3.0.1 /usr/share/nginx/www/kibana
 cp /vagrant/kibana.config.js /usr/share/nginx/www/kibana/config.js
 cp /vagrant/dashboard.json /usr/share/nginx/www/kibana/app/dashboards/custom.json
+cp /vagrant/dashboard.board.json /usr/share/nginx/www/kibana/app/dashboards/
 
 echo "Install log-generator"
 cp /vagrant/log-generator.jar .
@@ -58,6 +59,9 @@ do
 done
 
 curl -XPUT http://localhost:9200/_template/logstash_per_index --data-binary @/vagrant/mapping.json
+
+curl -XPOST 'localhost:9200/kibana-int/dashboard/Geekshop' --data-binary @/vagrant/dashboard.json
+curl -XPOST 'localhost:9200/kibana-int/dashboard/GeekShop - Board' --data-binary @/vagrant/dashboard.board.json
 
 echo "Starting log generator"
 nohup java -jar log-generator.jar -n 10 -r 1000 > log-generator.nohup &

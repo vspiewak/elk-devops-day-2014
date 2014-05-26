@@ -1,5 +1,5 @@
 {
-  "title": "GeekShop",
+  "title": "GeekShop - Board",
   "services": {
     "query": {
       "idQueue": [],
@@ -67,7 +67,7 @@
         "0": {
           "type": "time",
           "field": "@timestamp",
-          "from": "now-1h",
+          "from": "now-6h",
           "to": "now",
           "mandate": "must",
           "active": true,
@@ -82,8 +82,351 @@
   },
   "rows": [
     {
+      "title": "Numbers",
+      "height": "160px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 2,
+          "editable": true,
+          "type": "column",
+          "loadingEditor": false,
+          "panels": [
+            {
+              "type": "stats",
+              "mode": "total",
+              "field": "price",
+              "format": "money",
+              "display_breakdown": "no",
+              "height": "150px",
+              "queries": {
+                "mode": "selected",
+                "ids": [
+                  2
+                ]
+              },
+              "style": {
+                "font-size": "24pt"
+              },
+              "sort_field": "",
+              "sort_reverse": false,
+              "label_name": "Query",
+              "value_name": "Value",
+              "spyable": true,
+              "title": "CA"
+            },
+            {
+              "loading": false,
+              "sizeable": false,
+              "draggable": false,
+              "removable": false,
+              "span": 10,
+              "height": "150px",
+              "editable": true,
+              "type": "hits",
+              "chart": "total",
+              "style": {
+                "font-size": "32pt"
+              },
+              "arrangement": "horizontal",
+              "counter_pos": "above",
+              "donut": false,
+              "tilt": false,
+              "labels": true,
+              "spyable": true,
+              "queries": {
+                "mode": "selected",
+                "ids": [
+                  2
+                ]
+              },
+              "title": "Sell"
+            }
+          ],
+          "title": "Overview"
+        },
+        {
+          "error": false,
+          "span": 2,
+          "editable": false,
+          "type": "column",
+          "loadingEditor": false,
+          "panels": [
+            {
+              "loading": false,
+              "sizeable": false,
+              "draggable": false,
+              "removable": false,
+              "span": 10,
+              "height": "150px",
+              "editable": false,
+              "type": "hits",
+              "chart": "total",
+              "style": {
+                "font-size": "28pt"
+              },
+              "arrangement": "horizontal",
+              "counter_pos": "above",
+              "donut": false,
+              "tilt": false,
+              "labels": true,
+              "spyable": true,
+              "queries": {
+                "mode": "selected",
+                "ids": [
+                  1
+                ]
+              },
+              "title": "Search"
+            },
+            {
+              "loading": false,
+              "sizeable": false,
+              "draggable": false,
+              "removable": false,
+              "span": 10,
+              "height": "150px",
+              "editable": false,
+              "type": "hits",
+              "chart": "total",
+              "style": {
+                "font-size": "28pt"
+              },
+              "arrangement": "horizontal",
+              "counter_pos": "above",
+              "donut": false,
+              "tilt": false,
+              "labels": true,
+              "spyable": true,
+              "queries": {
+                "mode": "selected",
+                "ids": [
+                  2
+                ]
+              },
+              "title": "Sell"
+            }
+          ],
+          "title": "Total"
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "trends",
+          "loadingEditor": false,
+          "ago": "1h",
+          "arrangement": "vertical",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              1,
+              2
+            ]
+          },
+          "style": {
+            "font-size": "28pt"
+          },
+          "title": "Trends"
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "sparklines",
+          "loadingEditor": false,
+          "mode": "count",
+          "time_field": "@timestamp",
+          "value_field": null,
+          "interval": "30m",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              1,
+              2
+            ]
+          },
+          "derivative": true,
+          "title": "Graph"
+        },
+        {
+          "error": false,
+          "span": 2,
+          "editable": true,
+          "type": "goal",
+          "loadingEditor": false,
+          "donut": true,
+          "tilt": false,
+          "legend": "none",
+          "labels": true,
+          "spyable": true,
+          "query": {
+            "goal": 10000
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              2
+            ]
+          },
+          "title": "goal sell"
+        },
+        {
+          "error": false,
+          "span": 2,
+          "editable": true,
+          "type": "goal",
+          "loadingEditor": false,
+          "donut": true,
+          "tilt": false,
+          "legend": "none",
+          "labels": true,
+          "spyable": true,
+          "query": {
+            "goal": 1000000
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              1
+            ]
+          },
+          "title": "goal search"
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "Hits",
+      "height": "180px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 2,
+          "editable": true,
+          "type": "hits",
+          "loadingEditor": false,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              1,
+              2
+            ]
+          },
+          "style": {
+            "font-size": "10pt"
+          },
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "none",
+          "donut": true,
+          "tilt": false,
+          "labels": true,
+          "spyable": true,
+          "title": "Search | €"
+        },
+        {
+          "span": 2,
+          "editable": true,
+          "type": "hits",
+          "loadingEditor": false,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              3,
+              4
+            ]
+          },
+          "style": {
+            "font-size": "10pt"
+          },
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "none",
+          "donut": true,
+          "tilt": false,
+          "labels": true,
+          "spyable": true,
+          "title": "♂ | ♀"
+        },
+        {
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              0,
+              2
+            ]
+          },
+          "field": "name",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "bar",
+          "counter_pos": "none",
+          "spyable": true,
+          "title": "Top sell",
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": ""
+        },
+        {
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              1
+            ]
+          },
+          "field": "name",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "bar",
+          "counter_pos": "none",
+          "spyable": true,
+          "title": "Top search",
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": ""
+        }
+      ],
+      "notice": false
+    },
+    {
       "title": "Timeline",
-      "height": "300px",
+      "height": "280px",
       "editable": true,
       "collapse": false,
       "collapsable": true,
@@ -100,16 +443,16 @@
           "value_field": null,
           "auto_int": true,
           "resolution": 100,
-          "interval": "30s",
-          "fill": 6,
+          "interval": "5m",
+          "fill": 5,
           "linewidth": 2,
           "timezone": "browser",
           "spyable": true,
           "zoomlinks": true,
-          "bars": true,
+          "bars": false,
           "stack": true,
           "points": false,
-          "lines": false,
+          "lines": true,
           "legend": true,
           "x-axis": true,
           "y-axis": true,
@@ -119,9 +462,7 @@
             "mode": "selected",
             "ids": [
               1,
-              2,
-              3,
-              4
+              2
             ]
           },
           "title": "Events over time",
@@ -189,138 +530,10 @@
       "notice": false
     },
     {
-      "title": "Hits",
-      "height": "200px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "goal",
-          "loadingEditor": false,
-          "donut": true,
-          "tilt": false,
-          "legend": "none",
-          "labels": true,
-          "spyable": true,
-          "query": {
-            "goal": 10000
-          },
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1
-            ]
-          },
-          "title": "search"
-        },
-        {
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "goal",
-          "loadingEditor": false,
-          "donut": true,
-          "tilt": false,
-          "legend": "none",
-          "labels": true,
-          "spyable": true,
-          "query": {
-            "goal": 10000
-          },
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              2
-            ]
-          },
-          "title": "sell"
-        },
-        {
-          "span": 2,
-          "editable": true,
-          "type": "hits",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1,
-              2
-            ]
-          },
-          "style": {
-            "font-size": "10pt"
-          },
-          "arrangement": "horizontal",
-          "chart": "pie",
-          "counter_pos": "none",
-          "donut": true,
-          "tilt": false,
-          "labels": true,
-          "spyable": true,
-          "title": "Search | €"
-        },
-        {
-          "span": 2,
-          "editable": true,
-          "type": "hits",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              3,
-              4
-            ]
-          },
-          "style": {
-            "font-size": "10pt"
-          },
-          "arrangement": "horizontal",
-          "chart": "pie",
-          "counter_pos": "none",
-          "donut": true,
-          "tilt": false,
-          "labels": true,
-          "spyable": true,
-          "title": "♂ | ♀"
-        },
-        {
-          "span": 4,
-          "editable": true,
-          "type": "hits",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1,
-              2,
-              3,
-              4
-            ]
-          },
-          "style": {
-            "font-size": "10pt"
-          },
-          "arrangement": "horizontal",
-          "chart": "bar",
-          "counter_pos": "above",
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "spyable": true,
-          "title": "Search | Sell | ♂ | ♀"
-        }
-      ],
-      "notice": false
-    },
-    {
       "title": "Search",
       "height": "200px",
       "editable": true,
-      "collapse": false,
+      "collapse": true,
       "collapsable": true,
       "panels": [
         {
@@ -421,39 +634,6 @@
           "tmode": "terms",
           "tstat": "total",
           "valuefield": ""
-        },
-        {
-          "error": false,
-          "span": 4,
-          "editable": true,
-          "type": "terms",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1
-            ]
-          },
-          "field": "name",
-          "exclude": [],
-          "missing": false,
-          "other": false,
-          "size": 10,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "bar",
-          "counter_pos": "none",
-          "spyable": true,
-          "title": "Top search",
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": ""
         }
       ],
       "notice": false
@@ -462,7 +642,7 @@
       "title": "Sell",
       "height": "200px",
       "editable": true,
-      "collapse": false,
+      "collapse": true,
       "collapsable": true,
       "panels": [
         {
@@ -510,39 +690,6 @@
               2
             ]
           },
-          "field": "email",
-          "exclude": [],
-          "missing": false,
-          "other": false,
-          "size": 5,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "table",
-          "counter_pos": "above",
-          "spyable": true,
-          "title": "Top customers",
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": ""
-        },
-        {
-          "error": false,
-          "span": 3,
-          "editable": true,
-          "type": "terms",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              2
-            ]
-          },
           "field": "name",
           "exclude": [],
           "missing": false,
@@ -565,23 +712,48 @@
           "valuefield": ""
         },
         {
-          "error": false,
           "span": 4,
+          "editable": true,
+          "type": "hits",
+          "loadingEditor": false,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "style": {
+            "font-size": "10pt"
+          },
+          "arrangement": "horizontal",
+          "chart": "bar",
+          "counter_pos": "above",
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "spyable": true,
+          "title": "Search | Sell | ♂ | ♀"
+        },
+        {
+          "error": false,
+          "span": 3,
           "editable": true,
           "type": "terms",
           "loadingEditor": false,
           "queries": {
             "mode": "selected",
             "ids": [
-              0,
               2
             ]
           },
-          "field": "model",
+          "field": "email",
           "exclude": [],
           "missing": false,
           "other": false,
-          "size": 10,
+          "size": 5,
           "order": "count",
           "style": {
             "font-size": "10pt"
@@ -590,10 +762,10 @@
           "tilt": false,
           "labels": true,
           "arrangement": "horizontal",
-          "chart": "bar",
-          "counter_pos": "none",
+          "chart": "table",
+          "counter_pos": "above",
           "spyable": true,
-          "title": "Top models",
+          "title": "Top customers",
           "tmode": "terms",
           "tstat": "total",
           "valuefield": ""
@@ -605,7 +777,7 @@
       "title": "User Agents",
       "height": "150px",
       "editable": true,
-      "collapse": false,
+      "collapse": true,
       "collapsable": true,
       "panels": [
         {
@@ -754,7 +926,7 @@
       "title": "Events",
       "height": "350px",
       "editable": true,
-      "collapse": false,
+      "collapse": true,
       "collapsable": true,
       "panels": [
         {
@@ -777,7 +949,9 @@
             "font-size": "9pt"
           },
           "overflow": "min-height",
-          "fields": [],
+          "fields": [
+            "price"
+          ],
           "highlight": [],
           "sortable": true,
           "header": true,
@@ -813,7 +987,7 @@
     "default": "NO_TIME_FILTER_OR_INDEX_PATTERN_NOT_MATCHED",
     "warm_fields": true
   },
-  "style": "dark",
+  "style": "light",
   "panel_hints": true,
   "pulldowns": [
     {
@@ -835,7 +1009,7 @@
     {
       "type": "filtering",
       "collapse": true,
-      "notice": false,
+      "notice": true,
       "enable": true
     }
   ],
@@ -888,5 +1062,5 @@
     "load_local": true,
     "hide": false
   },
-  "refresh": "5s"
+  "refresh": false
 }
