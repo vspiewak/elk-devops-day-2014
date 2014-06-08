@@ -19,14 +19,6 @@ apt-get install -y -qq nginx
 cp /vagrant/nginx.es.lb.conf /etc/nginx/nginx.conf
 /etc/init.d/nginx restart
 
-echo "Install kibana"
-curl -O https://download.elasticsearch.org/kibana/kibana/kibana-3.0.1.tar.gz
-tar xzf kibana-3.0.1.tar.gz
-mv kibana-3.0.1 /usr/share/nginx/www/kibana
-cp /vagrant/kibana.config.js /usr/share/nginx/www/kibana/config.js
-cp /vagrant/dashboard.server1.collectd.json /usr/share/nginx/www/kibana/app/dashboards/collectd.json
-cp /vagrant/dashboard.server1.jmx.json /usr/share/nginx/www/kibana/app/dashboards/jmx.json
-
 echo "Install Elasticsearch"
 curl -s -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.1.tar.gz
 tar xzf elasticsearch-1.1.1.tar.gz
@@ -52,15 +44,6 @@ cp /vagrant/elasticsearch.node4.yml es-node4/config/elasticsearch.yml
 cp /vagrant/elasticsearch.node5.yml es-node5/config/elasticsearch.yml
 cp /vagrant/elasticsearch.node6.yml es-node6/config/elasticsearch.yml
 cp /vagrant/elasticsearch.node7.yml es-node7/config/elasticsearch.yml
-
-echo "Installing logstash"
-wget https://download.elasticsearch.org/logstash/logstash/logstash-1.4.0.tar.gz
-tar xzf logstash-1.4.0.tar.gz
-cp /vagrant/logstash.conf .
-cp -r /vagrant/patterns .
-
-curl -O http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
-gunzip GeoLiteCity.dat.gz
 
 echo "Starting node 1"
 es-node1/bin/elasticsearch -d
@@ -124,10 +107,3 @@ do
 sleep 1
 echo "Waiting ES node 7 to be up..."
 done
-
-echo "Update mapping for eshop"
-curl -XPUT http://localhost:9400/_template/logstash_per_index --data-binary @/vagrant/mapping.json
-
-echo "Starting logstash"
-nohup logstash-1.4.0/bin/logstash agent -f logstash.conf > logstash.nohup 2>&1 &
-
