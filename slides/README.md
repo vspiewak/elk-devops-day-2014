@@ -76,4 +76,4 @@ POST /_aliases
 ] }
 
 
-
+http://www.cubrid.org/blog/dev-platform/our-experience-creating-large-scale-log-search-system-using-elasticsearch/
