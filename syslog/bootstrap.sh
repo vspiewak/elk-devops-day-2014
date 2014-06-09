@@ -41,8 +41,7 @@ curl -O https://download.elasticsearch.org/kibana/kibana/kibana-3.0.1.tar.gz
 tar xvzf kibana-3.0.1.tar.gz
 mv kibana-3.0.1 /usr/share/nginx/www/kibana
 cp /vagrant/kibana.config.js /usr/share/nginx/www/kibana/config.js
-cp /vagrant/dashboard.json /usr/share/nginx/www/kibana/app/dashboards/custom.json
-cp /vagrant/dashboard.board.json /usr/share/nginx/www/kibana/app/dashboards/
+cp /vagrant/dashboard.syslog.json /usr/share/nginx/www/kibana/app/dashboards/syslog.json
 
 echo "Install log-generator"
 cp /vagrant/log-generator.jar .
