@@ -290,6 +290,42 @@
           "type": "lucene",
           "enable": true,
           "query": "plugin:\"GenericJMX\" AND  type_instance:\"process_cpu_load\""
+        },
+        "32": {
+          "id": 32,
+          "color": "#9AC48A",
+          "alias": "flume event accepted",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "plugin:\"GenericJMX\" AND plugin_instance:\"flume-source\" AND type_instance:\"event_accepted_count\""
+        },
+        "33": {
+          "id": 33,
+          "color": "#F2C96D",
+          "alias": "flume event received",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "plugin:\"GenericJMX\" AND plugin_instance:\"flume-source\" AND type_instance:\"event_received_count\""
+        },
+        "34": {
+          "id": 34,
+          "color": "#65C5DB",
+          "alias": "flume channel percent",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "plugin:\"GenericJMX\" AND plugin_instance:\"flume-channel\" AND type_instance:\"channel_fill_percentage\""
+        },
+        "35": {
+          "id": 35,
+          "color": "#F9934E",
+          "alias": "flume channel size",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "plugin:\"GenericJMX\" AND plugin_instance:\"flume-channel\" AND type_instance:\"channel_size\""
         }
       },
       "ids": [
@@ -324,7 +360,11 @@
         28,
         29,
         30,
-        31
+        31,
+        32,
+        33,
+        34,
+        35
       ]
     },
     "filter": {
@@ -347,75 +387,48 @@
   },
   "rows": [
     {
-      "title": "Graph",
-      "height": "350px",
+      "title": "Overview",
+      "height": "150px",
       "editable": true,
-      "collapse": true,
+      "collapse": false,
       "collapsable": true,
       "panels": [
         {
-          "span": 12,
+          "span": 3,
           "editable": true,
-          "group": [
-            "default"
-          ],
           "type": "histogram",
-          "mode": "count",
+          "loadingEditor": false,
+          "mode": "mean",
           "time_field": "@timestamp",
-          "value_field": null,
+          "value_field": "value",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": "100",
+          "y_format": "none",
+          "grid": {
+            "max": 100,
+            "min": 0
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              30,
+              31
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
           "auto_int": true,
           "resolution": 100,
           "interval": "10s",
-          "fill": 3,
-          "linewidth": 3,
-          "timezone": "browser",
-          "spyable": true,
-          "zoomlinks": true,
-          "bars": true,
-          "stack": true,
-          "points": false,
-          "lines": false,
-          "legend": true,
-          "x-axis": true,
-          "y-axis": true,
-          "percentage": false,
-          "interactive": true,
-          "queries": {
-            "mode": "all",
-            "ids": [
-              0,
-              1,
-              2,
-              3,
-              4,
-              5,
-              6,
-              7,
-              8,
-              9,
-              10,
-              11,
-              12,
-              13,
-              14,
-              15,
-              16,
-              17,
-              18,
-              19,
-              20,
-              21,
-              22,
-              23,
-              24,
-              25,
-              26,
-              27,
-              28,
-              29
-            ]
-          },
-          "title": "Events over time",
           "intervals": [
             "auto",
             "1s",
@@ -428,46 +441,32 @@
             "12h",
             "1d",
             "1w",
-            "1M",
             "1y"
           ],
+          "lines": true,
+          "fill": 2,
+          "linewidth": 3,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "spyable": true,
+          "zoomlinks": true,
           "options": true,
+          "legend": false,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "derivative": false,
           "tooltip": {
             "value_type": "cumulative",
             "query_as_alias": true
           },
-          "scale": 1,
-          "y_format": "none",
-          "grid": {
-            "max": null,
-            "min": 0
-          },
-          "annotate": {
-            "enable": false,
-            "query": "*",
-            "size": 20,
-            "field": "_type",
-            "sort": [
-              "_score",
-              "desc"
-            ]
-          },
-          "pointradius": 5,
-          "show_query": true,
-          "legend_counts": true,
-          "zerofill": true,
-          "derivative": false
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "Overview",
-      "height": "150px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
+          "title": "cpu load"
+        },
         {
           "span": 3,
           "editable": true,
@@ -518,7 +517,7 @@
             "1y"
           ],
           "lines": true,
-          "fill": 0,
+          "fill": 2,
           "linewidth": 3,
           "points": false,
           "pointradius": 5,
@@ -527,7 +526,7 @@
           "spyable": true,
           "zoomlinks": true,
           "options": true,
-          "legend": true,
+          "legend": false,
           "show_query": true,
           "interactive": true,
           "legend_counts": true,
@@ -591,7 +590,7 @@
             "1y"
           ],
           "lines": true,
-          "fill": 0,
+          "fill": 2,
           "linewidth": 3,
           "points": false,
           "pointradius": 5,
@@ -600,7 +599,7 @@
           "spyable": true,
           "zoomlinks": true,
           "options": true,
-          "legend": true,
+          "legend": false,
           "show_query": true,
           "interactive": true,
           "legend_counts": true,
@@ -664,7 +663,7 @@
             "1y"
           ],
           "lines": true,
-          "fill": 0,
+          "fill": 2,
           "linewidth": 3,
           "points": false,
           "pointradius": 5,
@@ -673,7 +672,7 @@
           "spyable": true,
           "zoomlinks": true,
           "options": true,
-          "legend": true,
+          "legend": false,
           "show_query": true,
           "interactive": true,
           "legend_counts": true,
@@ -686,9 +685,19 @@
             "query_as_alias": true
           },
           "title": "loaded classes"
-        },
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "Heap / Non Heap",
+      "height": "150px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
         {
-          "span": 3,
+          "span": 4,
           "editable": true,
           "type": "histogram",
           "loadingEditor": false,
@@ -697,17 +706,17 @@
           "value_field": "value",
           "x-axis": true,
           "y-axis": true,
-          "scale": "100",
-          "y_format": "none",
+          "scale": 1,
+          "y_format": "bytes",
           "grid": {
-            "max": 100,
+            "max": null,
             "min": 0
           },
           "queries": {
             "mode": "selected",
             "ids": [
-              30,
-              31
+              21,
+              22
             ]
           },
           "annotate": {
@@ -743,7 +752,7 @@
           "points": false,
           "pointradius": 5,
           "bars": false,
-          "stack": false,
+          "stack": true,
           "spyable": true,
           "zoomlinks": true,
           "options": true,
@@ -756,21 +765,11 @@
           "zerofill": true,
           "derivative": false,
           "tooltip": {
-            "value_type": "cumulative",
+            "value_type": "individual",
             "query_as_alias": true
           },
-          "title": "cpu load"
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "Heap / Non Heap",
-      "height": "150px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
+          "title": "heap / non heap"
+        },
         {
           "span": 4,
           "editable": true,
@@ -916,7 +915,17 @@
             "query_as_alias": true
           },
           "title": "non heap"
-        },
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "Heap",
+      "height": "150px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
         {
           "span": 4,
           "editable": true,
@@ -936,91 +945,7 @@
           "queries": {
             "mode": "selected",
             "ids": [
-              21,
-              22
-            ]
-          },
-          "annotate": {
-            "enable": false,
-            "query": "*",
-            "size": 20,
-            "field": "_type",
-            "sort": [
-              "_score",
-              "desc"
-            ]
-          },
-          "auto_int": true,
-          "resolution": 100,
-          "interval": "10s",
-          "intervals": [
-            "auto",
-            "1s",
-            "1m",
-            "5m",
-            "10m",
-            "30m",
-            "1h",
-            "3h",
-            "12h",
-            "1d",
-            "1w",
-            "1y"
-          ],
-          "lines": true,
-          "fill": 0,
-          "linewidth": 3,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": true,
-          "spyable": true,
-          "zoomlinks": true,
-          "options": true,
-          "legend": true,
-          "show_query": true,
-          "interactive": true,
-          "legend_counts": true,
-          "timezone": "browser",
-          "percentage": false,
-          "zerofill": true,
-          "derivative": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "title": "heap / non heap"
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "Old Gen",
-      "height": "150px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "span": 3,
-          "editable": true,
-          "type": "histogram",
-          "loadingEditor": false,
-          "mode": "mean",
-          "time_field": "@timestamp",
-          "value_field": "value",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_format": "bytes",
-          "grid": {
-            "max": null,
-            "min": 0
-          },
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1
+              18
             ]
           },
           "annotate": {
@@ -1072,10 +997,83 @@
             "value_type": "cumulative",
             "query_as_alias": true
           },
-          "title": "committed"
+          "title": "eden space"
         },
         {
-          "span": 3,
+          "span": 4,
+          "editable": true,
+          "type": "histogram",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_format": "bytes",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              14
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "10s",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "lines": true,
+          "fill": 0,
+          "linewidth": 3,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "zoomlinks": true,
+          "options": true,
+          "legend": true,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "derivative": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "title": "survivor space"
+        },
+        {
+          "span": 4,
           "editable": true,
           "type": "histogram",
           "loadingEditor": false,
@@ -1145,10 +1143,20 @@
             "value_type": "cumulative",
             "query_as_alias": true
           },
-          "title": "used"
-        },
+          "title": "old gen"
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "Non Heap",
+      "height": "150px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
         {
-          "span": 3,
+          "span": 4,
           "editable": true,
           "type": "histogram",
           "loadingEditor": false,
@@ -1166,80 +1174,7 @@
           "queries": {
             "mode": "selected",
             "ids": [
-              3
-            ]
-          },
-          "annotate": {
-            "enable": false,
-            "query": "*",
-            "size": 20,
-            "field": "_type",
-            "sort": [
-              "_score",
-              "desc"
-            ]
-          },
-          "auto_int": true,
-          "resolution": 100,
-          "interval": "10s",
-          "intervals": [
-            "auto",
-            "1s",
-            "1m",
-            "5m",
-            "10m",
-            "30m",
-            "1h",
-            "3h",
-            "12h",
-            "1d",
-            "1w",
-            "1y"
-          ],
-          "lines": true,
-          "fill": 0,
-          "linewidth": 3,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": true,
-          "spyable": true,
-          "zoomlinks": true,
-          "options": true,
-          "legend": true,
-          "show_query": true,
-          "interactive": true,
-          "legend_counts": true,
-          "timezone": "browser",
-          "percentage": false,
-          "zerofill": true,
-          "derivative": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "query_as_alias": true
-          },
-          "title": "max"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "histogram",
-          "loadingEditor": false,
-          "mode": "mean",
-          "time_field": "@timestamp",
-          "value_field": "value",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_format": "bytes",
-          "grid": {
-            "max": null,
-            "min": 0
-          },
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              4
+              6
             ]
           },
           "annotate": {
@@ -1291,46 +1226,420 @@
             "value_type": "individual",
             "query_as_alias": true
           },
-          "title": "init"
+          "title": "code cache"
+        },
+        {
+          "span": 4,
+          "editable": true,
+          "type": "histogram",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_format": "bytes",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              10
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "10s",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "lines": true,
+          "fill": 0,
+          "linewidth": 3,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "zoomlinks": true,
+          "options": true,
+          "legend": true,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "derivative": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "title": "Perm Gen"
         }
       ],
       "notice": false
     },
     {
-      "title": "Events",
-      "height": "350px",
+      "title": "Flume",
+      "height": "150px",
       "editable": true,
-      "collapse": false,
+      "collapse": true,
       "collapsable": true,
       "panels": [
         {
-          "title": "All events",
-          "error": false,
+          "span": 3,
+          "editable": true,
+          "type": "histogram",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_format": "none",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              33
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "10s",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "lines": true,
+          "fill": 2,
+          "linewidth": 3,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "zoomlinks": true,
+          "options": true,
+          "legend": true,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "derivative": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "title": "Events received"
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "histogram",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_format": "short",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              32
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "10s",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "lines": true,
+          "fill": 2,
+          "linewidth": 3,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "zoomlinks": true,
+          "options": true,
+          "legend": true,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "derivative": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "title": "Events accepted"
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "histogram",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_format": "none",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              35
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "10s",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "lines": true,
+          "fill": 2,
+          "linewidth": 3,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "zoomlinks": true,
+          "options": true,
+          "legend": true,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "derivative": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "title": "Channel size"
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "histogram",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "value",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_format": "none",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              34
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "10s",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "lines": true,
+          "fill": 2,
+          "linewidth": 3,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "zoomlinks": true,
+          "options": true,
+          "legend": true,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "derivative": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "title": "Chanel fill"
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "Graph",
+      "height": "350px",
+      "editable": true,
+      "collapse": true,
+      "collapsable": true,
+      "panels": [
+        {
           "span": 12,
           "editable": true,
           "group": [
             "default"
           ],
-          "type": "table",
-          "size": 100,
-          "pages": 5,
-          "offset": 0,
-          "sort": [
-            "@timestamp",
-            "desc"
-          ],
-          "style": {
-            "font-size": "9pt"
-          },
-          "overflow": "min-height",
-          "fields": [],
-          "localTime": true,
-          "timeField": "@timestamp",
-          "highlight": [],
-          "sortable": true,
-          "header": true,
-          "paging": true,
+          "type": "histogram",
+          "mode": "count",
+          "time_field": "@timestamp",
+          "value_field": null,
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "10s",
+          "fill": 3,
+          "linewidth": 3,
+          "timezone": "browser",
           "spyable": true,
+          "zoomlinks": true,
+          "bars": true,
+          "stack": true,
+          "points": false,
+          "lines": false,
+          "legend": true,
+          "x-axis": true,
+          "y-axis": true,
+          "percentage": false,
+          "interactive": true,
           "queries": {
             "mode": "all",
             "ids": [
@@ -1365,14 +1674,102 @@
               28,
               29,
               30,
-              31
+              31,
+              32,
+              33,
+              34,
+              35
             ]
           },
+          "title": "Events over time",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1M",
+            "1y"
+          ],
+          "options": true,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "scale": 1,
+          "y_format": "none",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "pointradius": 5,
+          "show_query": true,
+          "legend_counts": true,
+          "zerofill": true,
+          "derivative": false
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "Event",
+      "height": "350px",
+      "editable": true,
+      "collapse": true,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "table",
+          "loadingEditor": false,
+          "size": 100,
+          "pages": 5,
+          "offset": 0,
+          "sort": [
+            "_score",
+            "desc"
+          ],
+          "overflow": "min-height",
+          "fields": [],
+          "highlight": [],
+          "sortable": true,
+          "header": true,
+          "paging": true,
           "field_list": true,
-          "status": "Stable",
+          "all_fields": false,
           "trimFactor": 300,
+          "localTime": false,
+          "timeField": "@timestamp",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              0
+            ]
+          },
+          "style": {
+            "font-size": "9pt"
+          },
           "normTimes": true,
-          "all_fields": false
+          "title": "Event"
         }
       ],
       "notice": false
@@ -1386,26 +1783,26 @@
     "default": "NO_TIME_FILTER_OR_INDEX_PATTERN_NOT_MATCHED",
     "warm_fields": true
   },
-  "style": "dark",
+  "style": "light",
   "panel_hints": true,
   "pulldowns": [
     {
       "type": "query",
-      "collapse": false,
+      "collapse": true,
       "notice": false,
       "query": "*",
       "pinned": true,
       "history": [
+        "plugin:\"GenericJMX\" AND plugin_instance:\"flume-channel\" AND type_instance:\"channel_size\"",
+        "plugin:\"GenericJMX\" AND plugin_instance:\"flume-channel\" AND type_instance:\"channel_fill_percentage\"",
+        "plugin:\"GenericJMX\" AND plugin_instance:\"flume-source\" AND type_instance:\"event_received_count\"",
+        "plugin:\"GenericJMX\" AND plugin_instance:\"flume-source\" AND type_instance:\"event_accepted_count\"",
         "plugin:\"GenericJMX\" AND  type_instance:\"process_cpu_load\"",
         "plugin:\"GenericJMX\" AND  type_instance:\"system_cpu_load\"",
         "plugin:\"GenericJMX\" AND  type_instance:\"thread_count\"",
         "plugin:\"GenericJMX\" AND  plugin_instance:\"gc-PS Scavenge\" AND type_instance:\"invocations\"",
         "plugin:\"GenericJMX\" AND  plugin_instance:\"gc-PS Scavenge\" AND type_instance:\"collection_time\"",
-        "plugin:\"GenericJMX\" AND  plugin_instance:\"gc-PS MarkSweep\" AND type_instance:\"invocations\"",
-        "plugin:\"GenericJMX\" AND  plugin_instance:\"gc-PS MarkSweep\" AND type_instance:\"collection_time\"",
-        "plugin:\"GenericJMX\" AND  type_instance:\"compilation_time\"",
-        "plugin:\"GenericJMX\" AND  type_instance:\"loaded_classes\"",
-        "plugin:\"GenericJMX\" AND plugin_instance:\"memory-nonheap\""
+        "plugin:\"GenericJMX\" AND  plugin_instance:\"gc-PS MarkSweep\" AND type_instance:\"invocations\""
       ],
       "remember": 10,
       "enable": true

@@ -70,4 +70,4 @@ echo "Starting flume"
 cd /home/vagrant/apache-flume
 nohup bin/flume-ng agent --name agent --conf conf -f conf/flume.conf > ../flume.nohup 2>&1 &
 
-cp /vagrant/dashboard.json /usr/share/nginx/www/kibana/app/dashboards/custom.json
+cp /vagrant/dashboard.json /usr/share/nginx/www/kibana/app/dashboards/jmx.json
