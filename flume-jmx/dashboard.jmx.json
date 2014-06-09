@@ -12,23 +12,14 @@
           "type": "lucene",
           "enable": true
         },
-        "1": {
-          "id": 1,
-          "color": "#EAB839",
-          "alias": "old gen committed",
-          "pin": true,
-          "type": "lucene",
-          "enable": true,
-          "query": "plugin_instance:\"memory_pool-PS Old Gen\" AND type_instance:\"committed\""
-        },
         "2": {
           "id": 2,
           "color": "#6ED0E0",
-          "alias": "old gen used",
+          "alias": "tenured gen used",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "plugin_instance:\"memory_pool-PS Old Gen\" AND type_instance:\"used\""
+          "query": "plugin_instance:\"memory_pool-Tenured Gen\" AND type_instance:\"used\""
         },
         "3": {
           "id": 3,
@@ -100,7 +91,7 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "plugin_instance:\"memory_pool-PS Perm Gen\" AND type_instance:\"used\""
+          "query": "plugin_instance:\"memory_pool-Perm Gen\" AND type_instance:\"used\""
         },
         "11": {
           "id": 11,
@@ -136,7 +127,7 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "plugin_instance:\"memory_pool-PS Survivor Space\" AND type_instance:\"used\""
+          "query": "plugin_instance:\"memory_pool-Survivor Space\" AND type_instance:\"used\""
         },
         "15": {
           "id": 15,
@@ -172,7 +163,7 @@
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "plugin_instance:\"memory_pool-PS Eden Space\" AND type_instance:\"used\""
+          "query": "plugin_instance:\"memory_pool-Eden Space\" AND type_instance:\"used\""
         },
         "19": {
           "id": 19,
@@ -195,20 +186,20 @@
         "21": {
           "id": 21,
           "color": "#82B5D8",
-          "alias": "mem heap",
+          "alias": "mem heap usage",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "plugin:\"GenericJMX\" AND plugin_instance:\"memory-heap\""
+          "query": "plugin:\"GenericJMX\" AND plugin_instance:\"memory-heap\" AND type_instance:\"used\""
         },
         "22": {
           "id": 22,
           "color": "#E5A8E2",
-          "alias": "mem nonheap",
+          "alias": "mem nonheap used",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "plugin:\"GenericJMX\" AND plugin_instance:\"memory-nonheap\""
+          "query": "plugin:\"GenericJMX\" AND plugin_instance:\"memory-nonheap\" AND type_instance:\"used\""
         },
         "23": {
           "id": 23,
@@ -330,7 +321,6 @@
       },
       "ids": [
         0,
-        1,
         2,
         3,
         4,
@@ -752,7 +742,7 @@
           "points": false,
           "pointradius": 5,
           "bars": false,
-          "stack": true,
+          "stack": false,
           "spyable": true,
           "zoomlinks": true,
           "options": true,
@@ -1143,7 +1133,7 @@
             "value_type": "cumulative",
             "query_as_alias": true
           },
-          "title": "old gen"
+          "title": "Tenured Gen"
         }
       ],
       "notice": false
@@ -1308,7 +1298,7 @@
       "title": "Flume",
       "height": "150px",
       "editable": true,
-      "collapse": true,
+      "collapse": false,
       "collapsable": true,
       "panels": [
         {
@@ -1377,12 +1367,13 @@
           "timezone": "browser",
           "percentage": false,
           "zerofill": true,
-          "derivative": false,
+          "derivative": true,
           "tooltip": {
             "value_type": "cumulative",
             "query_as_alias": true
           },
-          "title": "Events received"
+          "title": "Events received",
+          "scaleSeconds": true
         },
         {
           "span": 3,
@@ -1395,7 +1386,7 @@
           "x-axis": true,
           "y-axis": true,
           "scale": 1,
-          "y_format": "short",
+          "y_format": "none",
           "grid": {
             "max": null,
             "min": 0
@@ -1450,12 +1441,13 @@
           "timezone": "browser",
           "percentage": false,
           "zerofill": true,
-          "derivative": false,
+          "derivative": true,
           "tooltip": {
             "value_type": "cumulative",
             "query_as_alias": true
           },
-          "title": "Events accepted"
+          "title": "Events accepted",
+          "scaleSeconds": true
         },
         {
           "span": 3,
@@ -1601,7 +1593,7 @@
             "value_type": "cumulative",
             "query_as_alias": true
           },
-          "title": "Chanel fill"
+          "title": "Channel fill"
         }
       ],
       "notice": false
