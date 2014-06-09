@@ -67,7 +67,7 @@
         "0": {
           "type": "time",
           "field": "@timestamp",
-          "from": "now-6h",
+          "from": "now-15m",
           "to": "now",
           "mandate": "must",
           "active": true,
@@ -88,6 +88,70 @@
       "collapse": false,
       "collapsable": true,
       "panels": [
+        {
+          "error": false,
+          "span": 2,
+          "editable": true,
+          "type": "goal",
+          "loadingEditor": false,
+          "donut": false,
+          "tilt": false,
+          "legend": "none",
+          "labels": true,
+          "spyable": true,
+          "query": {
+            "goal": 10000
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              2
+            ]
+          },
+          "title": "goal sell"
+        },
+        {
+          "error": false,
+          "span": 2,
+          "editable": true,
+          "type": "goal",
+          "loadingEditor": false,
+          "donut": false,
+          "tilt": false,
+          "legend": "none",
+          "labels": true,
+          "spyable": true,
+          "query": {
+            "goal": 10000
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              1
+            ]
+          },
+          "title": "goal search"
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "trends",
+          "loadingEditor": false,
+          "ago": "5m",
+          "arrangement": "vertical",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              1,
+              2
+            ]
+          },
+          "style": {
+            "font-size": "28pt"
+          },
+          "title": "Trends"
+        },
         {
           "error": false,
           "span": 2,
@@ -211,90 +275,6 @@
             }
           ],
           "title": "Total"
-        },
-        {
-          "span": 2,
-          "editable": true,
-          "type": "trends",
-          "loadingEditor": false,
-          "ago": "1h",
-          "arrangement": "vertical",
-          "spyable": true,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1,
-              2
-            ]
-          },
-          "style": {
-            "font-size": "28pt"
-          },
-          "title": "Trends"
-        },
-        {
-          "span": 2,
-          "editable": true,
-          "type": "sparklines",
-          "loadingEditor": false,
-          "mode": "count",
-          "time_field": "@timestamp",
-          "value_field": null,
-          "interval": "30m",
-          "spyable": true,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1,
-              2
-            ]
-          },
-          "derivative": true,
-          "title": "Graph"
-        },
-        {
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "goal",
-          "loadingEditor": false,
-          "donut": true,
-          "tilt": false,
-          "legend": "none",
-          "labels": true,
-          "spyable": true,
-          "query": {
-            "goal": 10000
-          },
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              2
-            ]
-          },
-          "title": "goal sell"
-        },
-        {
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "goal",
-          "loadingEditor": false,
-          "donut": true,
-          "tilt": false,
-          "legend": "none",
-          "labels": true,
-          "spyable": true,
-          "query": {
-            "goal": 1000000
-          },
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1
-            ]
-          },
-          "title": "goal search"
         }
       ],
       "notice": false
@@ -443,7 +423,7 @@
           "value_field": null,
           "auto_int": true,
           "resolution": 100,
-          "interval": "5m",
+          "interval": "10s",
           "fill": 5,
           "linewidth": 2,
           "timezone": "browser",
@@ -1062,5 +1042,5 @@
     "load_local": true,
     "hide": false
   },
-  "refresh": false
+  "refresh": "10s"
 }

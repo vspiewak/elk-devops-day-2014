@@ -67,7 +67,7 @@
         "0": {
           "type": "time",
           "field": "@timestamp",
-          "from": "now-1h",
+          "from": "now-15m",
           "to": "now",
           "mandate": "must",
           "active": true,
@@ -100,7 +100,7 @@
           "value_field": null,
           "auto_int": true,
           "resolution": 100,
-          "interval": "30s",
+          "interval": "10s",
           "fill": 6,
           "linewidth": 2,
           "timezone": "browser",
@@ -201,7 +201,7 @@
           "editable": true,
           "type": "goal",
           "loadingEditor": false,
-          "donut": true,
+          "donut": false,
           "tilt": false,
           "legend": "none",
           "labels": true,
@@ -223,7 +223,7 @@
           "editable": true,
           "type": "goal",
           "loadingEditor": false,
-          "donut": true,
+          "donut": false,
           "tilt": false,
           "legend": "none",
           "labels": true,
@@ -813,7 +813,7 @@
     "default": "NO_TIME_FILTER_OR_INDEX_PATTERN_NOT_MATCHED",
     "warm_fields": true
   },
-  "style": "dark",
+  "style": "light",
   "panel_hints": true,
   "pulldowns": [
     {
@@ -835,7 +835,7 @@
     {
       "type": "filtering",
       "collapse": true,
-      "notice": false,
+      "notice": true,
       "enable": true
     }
   ],
@@ -888,5 +888,5 @@
     "load_local": true,
     "hide": false
   },
-  "refresh": "5s"
+  "refresh": "10s"
 }
