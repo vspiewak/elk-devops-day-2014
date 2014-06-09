@@ -55,6 +55,7 @@ cp /vagrant/kibana.config.js /usr/share/nginx/www/kibana/config.js
 cp /vagrant/dashboard.collectd.json /usr/share/nginx/www/kibana/app/dashboards/collectd.json
 cp /vagrant/dashboard.system.json /usr/share/nginx/www/kibana/app/dashboards/system.json
 cp /vagrant/dashboard.jmx.json /usr/share/nginx/www/kibana/app/dashboards/jmx.json
+cp /vagrant/dashboard.syslog.json /usr/share/nginx/www/kibana/app/dashboards/syslog.json
 cp /vagrant/dashboard.market.json /usr/share/nginx/www/kibana/app/dashboards/market.json
 cp /vagrant/dashboard.board.json /usr/share/nginx/www/kibana/app/dashboards/board.json
 
@@ -80,7 +81,7 @@ JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.local.only=false"
 JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false"
 JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false"
 
-nohup java $JAVA_OPTS -jar log-generator.jar -n 10 -r 1000 > log-generator.nohup &
+nohup java $JAVA_OPTS -jar log-generator.jar -n 10 -r 1000 -e > app.log &
 
 echo "Starting logstash"
 #cd logstash-1.4.0
