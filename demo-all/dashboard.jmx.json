@@ -186,20 +186,20 @@
         "21": {
           "id": 21,
           "color": "#82B5D8",
-          "alias": "mem heap",
+          "alias": "mem heap usage",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "plugin:\"GenericJMX\" AND plugin_instance:\"memory-heap\""
+          "query": "plugin:\"GenericJMX\" AND plugin_instance:\"memory-heap\" AND type_instance:\"used\""
         },
         "22": {
           "id": 22,
           "color": "#E5A8E2",
-          "alias": "mem nonheap",
+          "alias": "mem nonheap used",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "plugin:\"GenericJMX\" AND plugin_instance:\"memory-nonheap\""
+          "query": "plugin:\"GenericJMX\" AND plugin_instance:\"memory-nonheap\" AND type_instance:\"used\""
         },
         "23": {
           "id": 23,
@@ -742,7 +742,7 @@
           "points": false,
           "pointradius": 5,
           "bars": false,
-          "stack": true,
+          "stack": false,
           "spyable": true,
           "zoomlinks": true,
           "options": true,
