@@ -101,15 +101,15 @@
           "auto_int": true,
           "resolution": 100,
           "interval": "10s",
-          "fill": 6,
+          "fill": 2,
           "linewidth": 2,
           "timezone": "browser",
           "spyable": true,
           "zoomlinks": true,
-          "bars": true,
+          "bars": false,
           "stack": true,
           "points": false,
-          "lines": false,
+          "lines": true,
           "legend": true,
           "x-axis": true,
           "y-axis": true,
@@ -288,30 +288,72 @@
           "title": "♂ | ♀"
         },
         {
-          "span": 4,
+          "error": false,
+          "span": 2,
           "editable": true,
-          "type": "hits",
+          "type": "terms",
           "loadingEditor": false,
+          "field": "tags",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "bar",
+          "counter_pos": "none",
+          "spyable": true,
           "queries": {
             "mode": "selected",
             "ids": [
               1,
-              2,
+              2
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "Search | Sell"
+        },
+        {
+          "error": false,
+          "span": 2,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "sex",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "bar",
+          "counter_pos": "none",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
               3,
               4
             ]
           },
-          "style": {
-            "font-size": "10pt"
-          },
-          "arrangement": "horizontal",
-          "chart": "bar",
-          "counter_pos": "above",
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "spyable": true,
-          "title": "Search | Sell | ♂ | ♀"
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "♂ | ♀"
         }
       ],
       "notice": false
@@ -573,7 +615,6 @@
           "queries": {
             "mode": "selected",
             "ids": [
-              0,
               2
             ]
           },
@@ -754,7 +795,7 @@
       "title": "Events",
       "height": "350px",
       "editable": true,
-      "collapse": false,
+      "collapse": true,
       "collapsable": true,
       "panels": [
         {
@@ -784,13 +825,9 @@
           "paging": true,
           "spyable": true,
           "queries": {
-            "mode": "all",
+            "mode": "selected",
             "ids": [
-              0,
-              1,
-              2,
-              3,
-              4
+              0
             ]
           },
           "field_list": true,
@@ -835,7 +872,7 @@
     {
       "type": "filtering",
       "collapse": true,
-      "notice": true,
+      "notice": false,
       "enable": true
     }
   ],

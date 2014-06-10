@@ -375,12 +375,9 @@
           "paging": true,
           "spyable": true,
           "queries": {
-            "mode": "all",
+            "mode": "selected",
             "ids": [
-              0,
-              1,
-              3,
-              4
+              0
             ]
           },
           "field_list": true,

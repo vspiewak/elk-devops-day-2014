@@ -67,7 +67,7 @@
         "0": {
           "type": "time",
           "field": "@timestamp",
-          "from": "now-15m",
+          "from": "now-1h",
           "to": "now",
           "mandate": "must",
           "active": true,
@@ -83,7 +83,7 @@
   "rows": [
     {
       "title": "Numbers",
-      "height": "160px",
+      "height": "200px",
       "editable": true,
       "collapse": false,
       "collapsable": true,
@@ -96,7 +96,29 @@
           "loadingEditor": false,
           "donut": false,
           "tilt": false,
-          "legend": "none",
+          "legend": "above",
+          "labels": true,
+          "spyable": true,
+          "query": {
+            "goal": 50000
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              1
+            ]
+          },
+          "title": "Search"
+        },
+        {
+          "error": false,
+          "span": 2,
+          "editable": true,
+          "type": "goal",
+          "loadingEditor": false,
+          "donut": false,
+          "tilt": false,
+          "legend": "above",
           "labels": true,
           "spyable": true,
           "query": {
@@ -108,29 +130,7 @@
               2
             ]
           },
-          "title": "goal sell"
-        },
-        {
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "goal",
-          "loadingEditor": false,
-          "donut": false,
-          "tilt": false,
-          "legend": "none",
-          "labels": true,
-          "spyable": true,
-          "query": {
-            "goal": 10000
-          },
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1
-            ]
-          },
-          "title": "goal search"
+          "title": "Sell"
         },
         {
           "span": 3,
@@ -151,66 +151,6 @@
             "font-size": "28pt"
           },
           "title": "Trends"
-        },
-        {
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "column",
-          "loadingEditor": false,
-          "panels": [
-            {
-              "type": "stats",
-              "mode": "total",
-              "field": "price",
-              "format": "money",
-              "display_breakdown": "no",
-              "height": "150px",
-              "queries": {
-                "mode": "selected",
-                "ids": [
-                  2
-                ]
-              },
-              "style": {
-                "font-size": "24pt"
-              },
-              "sort_field": "",
-              "sort_reverse": false,
-              "label_name": "Query",
-              "value_name": "Value",
-              "spyable": true,
-              "title": "CA"
-            },
-            {
-              "loading": false,
-              "sizeable": false,
-              "draggable": false,
-              "removable": false,
-              "span": 10,
-              "height": "150px",
-              "editable": true,
-              "type": "hits",
-              "chart": "total",
-              "style": {
-                "font-size": "32pt"
-              },
-              "arrangement": "horizontal",
-              "counter_pos": "above",
-              "donut": false,
-              "tilt": false,
-              "labels": true,
-              "spyable": true,
-              "queries": {
-                "mode": "selected",
-                "ids": [
-                  2
-                ]
-              },
-              "title": "Sell"
-            }
-          ],
-          "title": "Overview"
         },
         {
           "error": false,
@@ -275,6 +215,32 @@
             }
           ],
           "title": "Total"
+        },
+        {
+          "error": false,
+          "span": 2,
+          "editable": true,
+          "type": "stats",
+          "loadingEditor": false,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              2
+            ]
+          },
+          "style": {
+            "font-size": "42pt"
+          },
+          "format": "money",
+          "mode": "total",
+          "display_breakdown": "no",
+          "sort_field": "",
+          "sort_reverse": false,
+          "label_name": "Query",
+          "value_name": "Value",
+          "spyable": true,
+          "title": "CA",
+          "field": "price"
         }
       ],
       "notice": false
@@ -343,7 +309,6 @@
           "queries": {
             "mode": "selected",
             "ids": [
-              0,
               2
             ]
           },
@@ -423,7 +388,7 @@
           "value_field": null,
           "auto_int": true,
           "resolution": 100,
-          "interval": "10s",
+          "interval": "30s",
           "fill": 5,
           "linewidth": 2,
           "timezone": "browser",
@@ -510,399 +475,6 @@
       "notice": false
     },
     {
-      "title": "Search",
-      "height": "200px",
-      "editable": true,
-      "collapse": true,
-      "collapsable": true,
-      "panels": [
-        {
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "terms",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1
-            ]
-          },
-          "field": "category",
-          "exclude": [],
-          "missing": false,
-          "other": false,
-          "size": 10,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": true,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "pie",
-          "counter_pos": "none",
-          "spyable": true,
-          "title": "Cat",
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": ""
-        },
-        {
-          "error": false,
-          "span": 3,
-          "editable": true,
-          "type": "terms",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1
-            ]
-          },
-          "field": "options",
-          "exclude": [],
-          "missing": false,
-          "other": false,
-          "size": 5,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "table",
-          "counter_pos": "above",
-          "spyable": true,
-          "title": "Top options",
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": ""
-        },
-        {
-          "error": false,
-          "span": 3,
-          "editable": true,
-          "type": "terms",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1
-            ]
-          },
-          "field": "geoip.ip",
-          "exclude": [],
-          "missing": false,
-          "other": false,
-          "size": 5,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "table",
-          "counter_pos": "above",
-          "spyable": true,
-          "title": "Top IP",
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": ""
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "Sell",
-      "height": "200px",
-      "editable": true,
-      "collapse": true,
-      "collapsable": true,
-      "panels": [
-        {
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "terms",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              2
-            ]
-          },
-          "field": "category",
-          "exclude": [],
-          "missing": false,
-          "other": false,
-          "size": 10,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": true,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "pie",
-          "counter_pos": "none",
-          "spyable": true,
-          "title": "cat",
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": ""
-        },
-        {
-          "error": false,
-          "span": 3,
-          "editable": true,
-          "type": "terms",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              2
-            ]
-          },
-          "field": "name",
-          "exclude": [],
-          "missing": false,
-          "other": false,
-          "size": 5,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "table",
-          "counter_pos": "above",
-          "spyable": true,
-          "title": "Top products",
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": ""
-        },
-        {
-          "span": 4,
-          "editable": true,
-          "type": "hits",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1,
-              2,
-              3,
-              4
-            ]
-          },
-          "style": {
-            "font-size": "10pt"
-          },
-          "arrangement": "horizontal",
-          "chart": "bar",
-          "counter_pos": "above",
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "spyable": true,
-          "title": "Search | Sell | ♂ | ♀"
-        },
-        {
-          "error": false,
-          "span": 3,
-          "editable": true,
-          "type": "terms",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              2
-            ]
-          },
-          "field": "email",
-          "exclude": [],
-          "missing": false,
-          "other": false,
-          "size": 5,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "table",
-          "counter_pos": "above",
-          "spyable": true,
-          "title": "Top customers",
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": ""
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "User Agents",
-      "height": "150px",
-      "editable": true,
-      "collapse": true,
-      "collapsable": true,
-      "panels": [
-        {
-          "error": false,
-          "span": 3,
-          "editable": true,
-          "type": "terms",
-          "loadingEditor": false,
-          "field": "useragent.name",
-          "exclude": [],
-          "missing": false,
-          "other": false,
-          "size": 10,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "table",
-          "counter_pos": "above",
-          "spyable": true,
-          "queries": {
-            "mode": "all",
-            "ids": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ]
-          },
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": "",
-          "title": "Browsers"
-        },
-        {
-          "error": false,
-          "span": 3,
-          "editable": true,
-          "type": "terms",
-          "loadingEditor": false,
-          "field": "useragent.device",
-          "exclude": [],
-          "missing": false,
-          "other": false,
-          "size": 10,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": true,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "table",
-          "counter_pos": "above",
-          "spyable": true,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1,
-              2
-            ]
-          },
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": "",
-          "title": "Devices"
-        },
-        {
-          "error": false,
-          "span": 3,
-          "editable": true,
-          "type": "terms",
-          "loadingEditor": false,
-          "field": "useragent.os_name",
-          "exclude": [],
-          "missing": false,
-          "other": false,
-          "size": 10,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "table",
-          "counter_pos": "above",
-          "spyable": true,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1,
-              2
-            ]
-          },
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": "",
-          "title": "OS"
-        },
-        {
-          "error": false,
-          "span": 3,
-          "editable": true,
-          "type": "terms",
-          "loadingEditor": false,
-          "field": "useragent.os",
-          "exclude": [],
-          "missing": false,
-          "other": false,
-          "size": 10,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "table",
-          "counter_pos": "above",
-          "spyable": true,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1,
-              2
-            ]
-          },
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": "",
-          "title": "OS Versions"
-        }
-      ],
-      "notice": false
-    },
-    {
       "title": "Events",
       "height": "350px",
       "editable": true,
@@ -929,22 +501,16 @@
             "font-size": "9pt"
           },
           "overflow": "min-height",
-          "fields": [
-            "price"
-          ],
+          "fields": [],
           "highlight": [],
           "sortable": true,
           "header": true,
           "paging": true,
           "spyable": true,
           "queries": {
-            "mode": "all",
+            "mode": "selected",
             "ids": [
-              0,
-              1,
-              2,
-              3,
-              4
+              0
             ]
           },
           "field_list": true,
@@ -989,7 +555,7 @@
     {
       "type": "filtering",
       "collapse": true,
-      "notice": true,
+      "notice": false,
       "enable": true
     }
   ],
